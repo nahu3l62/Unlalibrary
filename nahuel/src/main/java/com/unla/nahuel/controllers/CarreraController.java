@@ -80,6 +80,14 @@ public class CarreraController {
 		return "materias/index";
 	}
 	
+	@GetMapping("/materia/proyecto")
+	public String proyecto(Model model) {
+	
+		model.addAttribute("titulo", "Licenciatura en sistemas");
+
+		return "materias/proyecto";
+	}
+	
 	
 	
 	

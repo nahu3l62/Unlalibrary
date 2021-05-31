@@ -31,12 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+		.antMatchers("/index","/","/css/**","/images/**","/js/**","/vendor/**").permitAll()
 		.antMatchers("/perfiles/").hasAuthority("Administrador")
-		.antMatchers("/perfiles/lista").permitAll()
+		.antMatchers("/perfiles/lista").hasAuthority("Administrador")
+		.antMatchers("/usuarios/").permitAll()
 		.antMatchers("/perfiles/lista/edit/**").hasAuthority("Administrador")
 		.antMatchers("/perfiles/lista/delete/**").hasAuthority("Administrador")
-		.antMatchers("/usuarios/").hasAuthority("Administrador")
-		.antMatchers("/usuarios/lista").permitAll()
+		.antMatchers("/usuarios/lista").hasAuthority("Administrador")
 		.antMatchers("/usuarios/lista/edit/**").hasAuthority("Administrador")
 		.antMatchers("/usuarios/lista/delete/**").hasAuthority("Administrador")
 		.anyRequest().authenticated()

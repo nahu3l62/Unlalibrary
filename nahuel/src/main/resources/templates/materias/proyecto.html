@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head th:fragment="head">
 	<meta charset="UTF-8" />
 	<title>UNLa</title>
@@ -41,7 +38,7 @@
 
 	<div class="container">
 	
-	<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/carreras/lista}"
+	<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/carreras/materia}"
 			th:text="Atras" title="atras">
 		</a>
 
@@ -49,40 +46,28 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Materias</th>
-					<th scope="col">Año</th>					
-				</tr>
+					<th scope="col">Proyecto de software</th>
+										
+				</tr>	
 			</thead>
 			<tbody>
-			<tr>
-				<th scope="row"><a href="materia/proyecto">Proyecto de software</a></th>
-				<th scope="row"><a >3º </a></th>	
-			</tr>
-			
-			<tr>
-			<th scope="row"><a href="https://www.google.com.ar">Matematica III</a></th>
-				<th scope="row"><a >2º </a></th>
-			</tr>
-			
-			<tr>
-			<th scope="row"><a href="https://www.google.com.ar">Seminario de lenguajes</a></th>
-				<th scope="row"><a >2º </a></th>
-			</tr>
-			
-			<tr>
-			<th scope="row"><a href="https://www.google.com.ar">Organizacion de computadoras</a></th>
-				<th scope="row"><a >1º </a></th>
-			</tr>
-			
-			
-			<tr>
-			<th scope="row"><a href="https://www.google.com.ar">Orientacion a objetos</a></th>
-				<th scope="row"><a >2º </a></th>
-			</tr>
-
 			</tbody>
 		</table>
-			
+		
+		<form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
+
+  <p>
+
+    Sube un archivo:
+
+    <input type="file" name="archivosubido">
+
+    <input type="submit" value="Enviar datos">
+
+  </p>
+
+</form>
+	
 	</div>
 
 
