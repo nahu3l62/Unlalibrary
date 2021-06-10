@@ -1,5 +1,6 @@
 package com.unla.nahuel.controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +11,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.unla.nahuel.entities.Carreras;
 import com.unla.nahuel.entities.Perfiles;
@@ -89,6 +94,15 @@ public class CarreraController {
 	}
 	
 	
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
+	public String submit(@RequestParam("file") File file, Model model) {
+		
+	    model.addAttribute("file", file.getName());
+	    model.addAttribute("file2", file.getPath());
+	    
+	    System.out.println(file.getName());
+	    return "materias/subida";
+	}
 	
 	
 	

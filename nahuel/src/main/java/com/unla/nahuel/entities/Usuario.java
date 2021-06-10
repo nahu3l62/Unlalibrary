@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -16,7 +17,9 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario", uniqueConstraints = {
+		@UniqueConstraint(columnNames = {"documento", "correoElectronico", "nombreDeUsuario"})
+		})
 
 public class Usuario {
 	@Id
@@ -36,7 +39,7 @@ public class Usuario {
 
 	@Column(name = "documento")
 	@NotNull
-	private int documento;
+	private long documento;
 
 	@Column(name = "correoElectronico")
 	@Email
@@ -60,7 +63,7 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(long id, String nombre, String apellido, String tipoDocumento, int documento,
+	public Usuario(long id, String nombre, String apellido, String tipoDocumento, long documento,
 			String correoElectronico, String nombreDeUsuario, String contrasena) {
 		super();
 		this.id = id;
@@ -74,7 +77,7 @@ public class Usuario {
 
 	}
 
-	public Usuario(String nombre, String apellido, String tipoDocumento, int documento, String correoElectronico,
+	public Usuario(String nombre, String apellido, String tipoDocumento, long documento, String correoElectronico,
 			String nombreDeUsuario, String contrasena) {
 		super();
 		this.nombre = nombre;
@@ -119,11 +122,11 @@ public class Usuario {
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public int getDocumento() {
+	public long getDocumento() {
 		return documento;
 	}
 
-	public void setDocumento(int documento) {
+	public void setDocumento(long documento) {
 		this.documento = documento;
 	}
 

@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head th:fragment="head">
 	<meta charset="UTF-8" />
 	<title>UNLa</title>
@@ -40,50 +37,30 @@
 	</div>
 
 	<div class="container">
+	
+	<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/carreras/materia}"
+			th:text="Atras" title="atras">
+		</a>
 
 
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
-					<th scope="col">Tipo documento</th>
-					<th scope="col">Documento</th>
-					<th scope="col">Correo electronico</th>
-					<th scope="col">Usuario</th>
-					<th scope="col">Perfil</th>
-					<th scope="col">Activo</th>
-					<th scope="col" sec:authorize="hasAuthority('Administrador')">Deshabilitar usuario</th>
-				</tr>
+					<th scope="col">Proyecto de software</th>
+										
+				</tr>	
 			</thead>
 			<tbody>
-				<tr th:each="li:${lista}">
-
-					<th scope="row" th:text="${li.nombre}"></th>
-					<th scope="row" th:text="${li.apellido}"></th>
-					<th scope="row" th:text="${li.tipoDocumento}"></th>
-					<th scope="row" th:text="${li.documento}"></th>
-					<th scope="row" th:text="${li.correoElectronico}"></th>
-					<th scope="row" th:text="${li.nombreDeUsuario}"></th>
-					<th scope="row" th:text="${li.perfiles}"></th>
-					<th scope="row" th:text="${li.deshabilitado}"></th>
-					<td sec:authorize="hasAuthority('Administrador')">
-						<a class="btn btn-danger btn-sm" th:href="@{/usuarios/lista/delete/}+${li.id}"
-							th:text="Deshabilitar" title="Eliminar registro"
-							onclick="return confirm('¿Esta seguro de deshabilitar al usuario?');">
-						</a>
-					</td>
-				</tr>
-
 			</tbody>
 		</table>
-
-		<a class="nav-link float-right" th:href="@{/usuarios/lista/(format=pdf)}" title="Exportar a PDF"
-			target="_blank">
-
-			<img class="img-responsive center-box" th:src="@{/images/pdf.png}" height="auto">
-		</a>
-
+		
+		<h2>Subida completada!</h2>
+		<table>
+			<div class="container">
+				<h1 th:text="${file}"></h1>
+			</div>
+		</table>
+	
 	</div>
 
 
@@ -100,3 +77,10 @@
 </body>
 
 </html>
+
+
+
+
+
+
+

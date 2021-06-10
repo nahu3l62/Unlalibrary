@@ -34,9 +34,15 @@
             <a class="nav-link" href="/carreras/lista">Lista de carreras</a>
           </li>
 
-           <li class="nav-item">
-            <a class="nav-link" href="/usuarios/lista">Lista de usuarios</a>
-          </li>
+           <li class ="nav-item dropdown">
+						<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+							data-toggle="dropdown" href="#" id="navbarDropdownBlog">Lista de usuarios</a>
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item"  th:href="@{/usuarios/lista}">Usuarios activos</a>
+							<a class="dropdown-item"  th:href="@{/usuarios/lista/inactivo}">Usuarios inactivos</a>
+		
+						</div>
+					</li>
                    
           <li class="nav-item">
             <a class="nav-link" href="/perfiles/lista">Lista Perfiles</a>

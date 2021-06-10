@@ -53,7 +53,7 @@
 					<th scope="col">Usuario</th>
 					<th scope="col">Perfil</th>
 					<th scope="col">Activo</th>
-					<th scope="col" sec:authorize="hasAuthority('Administrador')">Deshabilitar usuario</th>
+					<th scope="col" sec:authorize="hasAuthority('Administrador')">Habilitar usuario</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,21 +68,15 @@
 					<th scope="row" th:text="${li.perfiles}"></th>
 					<th scope="row" th:text="${li.deshabilitado}"></th>
 					<td sec:authorize="hasAuthority('Administrador')">
-						<a class="btn btn-danger btn-sm" th:href="@{/usuarios/lista/delete/}+${li.id}"
-							th:text="Deshabilitar" title="Eliminar registro"
-							onclick="return confirm('¿Esta seguro de deshabilitar al usuario?');">
+						<a class="btn btn-success btn-sm" th:href="@{/usuarios/lista/activar/}+${li.id}"
+							th:text="Habilitar" title="Habilitar registro"
+							onclick="return confirm('¿Esta seguro de habilitar al usuario?');">
 						</a>
 					</td>
 				</tr>
 
 			</tbody>
 		</table>
-
-		<a class="nav-link float-right" th:href="@{/usuarios/lista/(format=pdf)}" title="Exportar a PDF"
-			target="_blank">
-
-			<img class="img-responsive center-box" th:src="@{/images/pdf.png}" height="auto">
-		</a>
 
 	</div>
 

@@ -37,6 +37,10 @@
 				</ul>
 				</div>
 			</nav>
+			<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+				<label th:text="${success}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
 		</header>
 	</header>
 
@@ -59,8 +63,7 @@
 					<p> Tipo documento:
 						<select th:field="*{tipoDocumento}" id="tipoDocumento">
 							<option th:value="D.N.I." th:text="D.N.I." />
-							<option th:value="L.C." th:text="L.C." />
-							<option th:value="L.E." th:text="L.E." />
+						</select>
 					</p>
 					<p> Documento: <input type="number" th:field="*{documento}" />
 						<small class="form-text text-danger" th:if="${#fields.hasErrors('documento')}"
@@ -85,6 +88,7 @@
 					<p> Perfil del Usuario:
 						<select th:field="*{perfiles}" id="perfiles">
 							<option th:each="perfil:${perfiles}" th:value="${perfil.id}" th:text="${perfil.rol}" />
+						</select>
 					</p>
 					<input type="submit" />
 				</form>

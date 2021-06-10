@@ -131,7 +131,7 @@ public class ListaUsuariosPdf extends AbstractPdfView {
 				celda.setPadding(5);
 				tablaLista.addCell(celda);
 				
-				Integer documento = usuario.getDocumento();
+				Long documento = usuario.getDocumento();
 				celda = new PdfPCell(new Phrase(documento.toString(), fuenteDatos));
 				celda.setPadding(5);
 				tablaLista.addCell(celda);
