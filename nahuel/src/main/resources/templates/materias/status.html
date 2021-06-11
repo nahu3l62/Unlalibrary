@@ -35,10 +35,7 @@
 		<h1 th:text="${titulo}"></h1>
 
 	</div>
-	
-	
-	
-	
+
 	<div class="container">
 	
 	<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/carreras/materia}"
@@ -57,24 +54,12 @@
 			</tbody>
 		</table>
 		
-		<div class="container">
-		<p th:text="${files}"></p>
-
-	</div>
-	
-		<div class="container">
-		
-		
-		<button th:download="${filess}" th:href="${filess}"> Download </button>
-
-	</div>
 		
 		
 			
-			<form method="POST" th:action="@{/carreras/upload}" enctype="multipart/form-data">
-				<input type="file" name="file" /><br /><br />
-				<input type="submit" value="Subir" />
-			</form>
+			<div th:if="${message}">
+				<h2 th:text="${message}" />
+			</div>
 	
 	</div>
 
