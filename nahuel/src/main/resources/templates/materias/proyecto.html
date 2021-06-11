@@ -56,19 +56,13 @@
 			<tbody>
 			</tbody>
 		</table>
-		
-		<div class="container">
-		<p th:text="${files}"></p>
 
-	</div>
 	
-		<div class="container">
-		
-		
-		<button th:download="${filess}" th:href="${filess}"> Download </button>
+		<a class="nav-link float-right" th:href="@{/perfiles/lista/(format=pdf)}" title="Exportar a PDF"
+			target="_blank">
 
-	</div>
-		
+			<img class="img-responsive center-box" th:src="@{/images/pdf.png}" height="auto">
+		</a>
 		
 			
 			<form method="POST" th:action="@{/carreras/upload}" enctype="multipart/form-data">

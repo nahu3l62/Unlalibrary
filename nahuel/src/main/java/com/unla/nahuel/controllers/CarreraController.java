@@ -93,7 +93,7 @@ public class CarreraController {
 		
 		
 	
-            List<File> files = Files.list(Paths.get(UPLOADED_FOLDER))
+           /* List<File> files = Files.list(Paths.get(UPLOADED_FOLDER))
                         .map(Path::toFile)
                         .collect(Collectors.toList());
              
@@ -104,12 +104,12 @@ public class CarreraController {
            while(iterador.hasNext()) {
         	   File prueba = iterador.next();
         	   System.out.println(prueba.getName());
-           }
+           }*/
            
            //System.out.println(files.get(0).getName());
            model.addAttribute("titulo", "Licenciatura en sistemas");
-           model.addAttribute("files", files);
-           model.addAttribute("filess", file);
+           //model.addAttribute("files", files);
+           //model.addAttribute("filess", file);
 		
 		//System.out.println(files);
 		
