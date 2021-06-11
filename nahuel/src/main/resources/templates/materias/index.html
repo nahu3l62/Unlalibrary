@@ -19,14 +19,6 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-					<li class="nav-item">
-						<a class="nav-link" href="/perfiles/lista">Lista Perfiles</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="/logout">Cerrar sesion</a>
-					</li>
-
 			</div>
 			</li>
 			</ul>
@@ -41,7 +33,7 @@
 
 	<div class="container">
 	
-	<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/carreras/lista}"
+	<a class="btn btn-primary btn-sm" th:href="@{/carreras/lista}"
 			th:text="Atras" title="atras">
 		</a>
 

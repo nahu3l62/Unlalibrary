@@ -16,14 +16,6 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-					<li class="nav-item">
-						<a class="nav-link" href="/perfiles/lista">Lista Perfiles</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="/logout">Cerrar sesion</a>
-					</li>
-
 			</div>
 			</li>
 			</ul>
@@ -41,7 +33,7 @@
 	
 	<div class="container">
 	
-	<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/carreras/materia}"
+	<a class="btn btn-primary btn-sm" sec:authorize="authenticated" th:href="@{/carreras/materia}"
 			th:text="Atras" title="atras">
 		</a>
 
@@ -58,14 +50,14 @@
 		</table>
 
 	
-		<a class="nav-link float-right" th:href="@{/perfiles/lista/(format=pdf)}" title="Exportar a PDF"
+		<a class="nav-link float-right" sec:authorize="hasAnyAuthority('Alumno', 'Administrador')" th:href="@{/perfiles/lista/(format=pdf)}" title="Exportar a PDF"
 			target="_blank">
 
 			<img class="img-responsive center-box" th:src="@{/images/pdf.png}" height="auto">
 		</a>
 		
 			
-			<form method="POST" th:action="@{/carreras/upload}" enctype="multipart/form-data">
+			<form method="POST" sec:authorize="hasAnyAuthority('Profesor', 'Administrador')" th:action="@{/carreras/upload}" enctype="multipart/form-data">
 				<input type="file" name="file" /><br /><br />
 				<input type="submit" value="Subir" />
 			</form>

@@ -19,14 +19,6 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-					<li class="nav-item">
-						<a class="nav-link" href="/perfiles/lista">Lista Perfiles</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="/logout">Cerrar sesion</a>
-					</li>
-
 			</div>
 			</li>
 			</ul>
@@ -50,7 +42,7 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Nombre</th>
-					<th scope="col" sec:authorize="hasAuthority('Administrador')">Materias</th>
+					<th scope="col" sec:authorize="authenticated">Materias</th>
 					
 				</tr>
 			</thead>
@@ -59,7 +51,7 @@
 
 					<th scope="row" th:text="${li.carrera}"></th>
 				
-					<td sec:authorize="hasAuthority('Administrador')">
+					<td sec:authorize="authenticated">
 						<a class="btn btn-success btn-sm" th:href="@{/carreras/materia}" th:text="Acceder"
 							title="Acceder a la carpeta">
 						</a>

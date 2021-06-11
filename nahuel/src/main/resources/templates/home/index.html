@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
@@ -31,32 +31,39 @@
         <ul class="navbar-nav ml-auto">
         
          <li class="nav-item">
-            <a class="nav-link" href="/carreras/lista">Lista de carreras</a>
+            <a class="nav-link" sec:authorize="authenticated" th:href="@{/carreras/lista}">Carreras</a>
           </li>
 
            <li class ="nav-item dropdown">
 						<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
-							data-toggle="dropdown" href="#" id="navbarDropdownBlog">Lista de usuarios</a>
+							data-toggle="dropdown" href="#" id="navbarDropdownBlog" sec:authorize="hasAuthority('Administrador')">Usuarios</a>
 						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item"  th:href="@{/usuarios/lista}">Usuarios activos</a>
-							<a class="dropdown-item"  th:href="@{/usuarios/lista/inactivo}">Usuarios inactivos</a>
+							<a class="dropdown-item"  th:href="@{/usuarios/lista}">Activos</a>
+							<a class="dropdown-item"  th:href="@{/usuarios/lista/inactivo}">Inactivos</a>
 		
 						</div>
 					</li>
                    
           <li class="nav-item">
-            <a class="nav-link" href="/perfiles/lista">Lista Perfiles</a>
+            <a class="nav-link" sec:authorize="hasAuthority('Administrador')" th:href="@{/perfiles/lista}">Perfiles</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="/usuarios/">Registrarse</a>
+            <a class="nav-link" sec:authorize="anonymous" th:href="@{/usuarios/}">Registrarse</a>
           </li>
           
           <li class="nav-item dropdown">
-						<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownBlog">Mi usuario</a>
+						<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+							data-toggle="dropdown" href="#" id="navbarDropdownBlog">Mi Usuario</a>
 						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
-							<form th:action="@{/logout}" method="post">
-								<input class="dropdown-item" style="cursor:pointer" type="submit" value="Cerrar sesion" />
+							<form sec:authorize="anonymous" th:action="@{/login}" method="post">
+								<input class="dropdown-item" style="cursor:pointer" type="submit"
+									value="Iniciar sesión" />
+							</form>
+
+							<form sec:authorize="authenticated" th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor:pointer" type="submit"
+									value="Cerrar sesión" />
 							</form>
 						</div>
 					</li>
